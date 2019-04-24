@@ -1,14 +1,18 @@
 extends KinematicBody2D
 
-var currentPos = 1
+var jump_speed = -600
+var gravity = 1200
+
+var velocity = Vector2()
+var jumping = false
 
 func get_input():
-	if(event.is_action_pressed("click")):
-		if(get_global_mouse_position().y <= 300):
-			if(currentPos != 0):
-				get_node(
-		else:
-			
+    velocity.x = 0
+    var jump = Input.is_action_just_pressed('ui_select')
+
+    if jump and is_on_floor():
+        jumping = true
+        velocity.y = jump_speed
 
 func _physics_process(delta):
     get_input()

@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Sprites/Fundo.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Piso.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Jogo1/Player.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/QuadradoPlayer.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/GeradorDeTriangulos.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Jogo1/GeradorDeTriangulos.gd" type="Script" id=5]
 [ext_resource path="res://Sprites/Triangulo.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]

@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Jogo3.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Fundo.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/QuadradoPlayer.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Piso.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/spawnLocations.gd" type="Script" id=5]
+[ext_resource path="res://Sprites/Quadrado.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25, 25 )
+
+[node name="Jogo3" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 522.809, 304.641 )
+scale = Vector2( 21.9124, 13.1857 )
+texture = ExtResource( 2 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 71.284, 275.799 )
+scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite2" type="Sprite" parent="Player"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 545.152, 171.191 )
+scale = Vector2( 23.5596, 0.180055 )
+texture = ExtResource( 4 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 535.18, 390.028 )
+scale = Vector2( 23.5596, 0.202216 )
+texture = ExtResource( 4 )
+
+[node name="spawnLocations" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Loc0" type="Position2D" parent="spawnLocations"]
+position = Vector2( 1102.49, 70.9141 )
+
+[node name="Loc1" type="Position2D" parent="spawnLocations"]
+position = Vector2( 1105.82, 274.792 )
+
+[node name="Loc2" type="Position2D" parent="spawnLocations"]
+position = Vector2( 1103.6, 509.695 )
+
+[node name="roads" type="Node2D" parent="."]
+
+[node name="Loc0" type="Position2D" parent="roads"]
+position = Vector2( 69.1064, 75.5795 )
+
+[node name="Loc1" type="Position2D" parent="roads"]
+position = Vector2( 72.431, 279.458 )
+
+[node name="Loc2" type="Position2D" parent="roads"]
+position = Vector2( 70.2144, 514.361 )
+
+[node name="enemy" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 1260.2, 270.259 )
+scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite2" type="Sprite" parent="enemy"]
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="enemy"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 506.196, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+

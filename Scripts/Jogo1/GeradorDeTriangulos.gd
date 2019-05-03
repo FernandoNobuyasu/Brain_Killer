@@ -11,5 +11,5 @@ func _process(delta):
 		time = (randi()%3)+2
 		print(time)
 		var triangulo = get_node("Triangulo").duplicate()
-		triangulo.set_script(preload("res://Scripts/Triangulo.gd"))
+		triangulo.set_script(preload("res://Scripts/Jogo1/Triangulo.gd"))
 		add_child(triangulo)

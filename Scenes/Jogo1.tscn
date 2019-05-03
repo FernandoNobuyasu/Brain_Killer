@@ -19,12 +19,12 @@ points = PoolVector2Array( 0, -25, 25, 25, -25, 25 )
 [node name="Jogo1" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 522.809, 304.641 )
-scale = Vector2( 21.9124, 13.1857 )
+scale = Vector2( 20.5, 12 )
 texture = ExtResource( 1 )
+offset = Vector2( 25, 25 )
 
 [node name="Piso" type="StaticBody2D" parent="."]
-position = Vector2( 500, 580 )
+position = Vector2( 500, 581 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -34,7 +34,8 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Piso"]
-scale = Vector2( 22, 1 )
+position = Vector2( 12.6316, -2.63156 )
+scale = Vector2( 20.5263, 0.894738 )
 texture = ExtResource( 2 )
 
 [node name="Player" type="KinematicBody2D" parent="."]

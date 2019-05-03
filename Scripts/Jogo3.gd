@@ -3,8 +3,11 @@ extends Node2D
 var dragging
 var drag_start = Vector2()
 var playerPos = 1
+var timeSpawn = 5
+var time = 0
 
 func _ready():
+	randomize()
 	pass
 
 func _input(event):
@@ -21,4 +24,23 @@ func _input(event):
 		if dir.y < 0 and playerPos != 2:
 			playerPos += 1
 			get_node("Player").position = get_node("roads/Loc"+String(playerPos)).position
+	pass
+
+func _physics_process(delta):
+	time += delta
+	if time >= timeSpawn:
+		time = 0
+		spawn()
+	pass
+
+func spawn():
+	var quant = randi()%2 + 1
+	var cars = [randi()%3]
+	if quant == 2:
+		cars.append((cars[0] + randi()%2 + 1) % 3)
+	for i in cars:
+		var car = get_node("enemy").duplicate()
+		car.set_script(preload("res://Scripts/Jogo1/Triangulo.gd"))
+		car.position = get_node("spawnLocations/Loc"+String(i)).position
+		add_child(car)
 	pass

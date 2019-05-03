@@ -6,6 +6,9 @@ var gravity = 1200
 var velocity = Vector2()
 var jumping = false
 
+func _init():
+	pass
+
 func get_input():
     velocity.x = 0
     var jump = Input.is_action_just_pressed('ui_select')

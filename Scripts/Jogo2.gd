@@ -1,57 +1,62 @@
 extends Node2D
-	
-var dragging
-var drag_start = Vector2()
-var timer = 0
-onready var circulo = get_node("RigidBody2D")
+
+var playerPos = 1
+var timeSpawn = 5
+var time = 0
 
 func _ready():
+	randomize()
 	pass
 
-func _process(delta):
-	if get_node("Label").visible == true:
-		timer += delta
-		var time = int(get_node("Label").text)
-		if time == 0:
-			game_over()
-		else:
-			if timer >= 1:
-				get_node("Label").text = ("0" if time <= 10 else "") + String(time-int(timer)) + "s"
-				timer -= 1
+func action(dir): # y
+	if dir > 0 and playerPos != 0:
+		playerPos -= 1
+		get_node("Player").position = get_node("roads/Loc"+String(playerPos)).position
+	if dir < 0 and playerPos != 2:
+		playerPos += 1
+		get_node("Player").position = get_node("roads/Loc"+String(playerPos)).position
 	pass
 
-func game_over():
-	pass
-
-func startTimer():
-	get_node("Label").visible = true
-	get_node("Label").text = "05s"
-	pass
-
-func stopTimer():
-	get_node("Label").visible = false
-	pass
+#func _input(event):
+#	if event.is_action_pressed("click") and not dragging:
+#		dragging = true
+#		drag_start = get_global_mouse_position()
+#	if event.is_action_released("click") and dragging:
+#		dragging = false
+#		var drag_end = get_global_mouse_position()
+#		var dir = drag_start - drag_end
+#		if dir.y > 0 and playerPos != 0:
+#			playerPos -= 1
+#			get_node("Player").position = get_node("roads/Loc"+String(playerPos)).position
+#		if dir.y < 0 and playerPos != 2:
+#			playerPos += 1
+#			get_node("Player").position = get_node("roads/Loc"+String(playerPos)).position
+#	pass
 
 func _physics_process(delta):
-	if get_node("RigidBody2D").angular_velocity > 0:
-		get_node("RigidBody2D").angular_velocity -= delta * 10
-		if get_node("RigidBody2D").angular_velocity <= 0:
-			get_node("RigidBody2D").angular_velocity = 0
-			startTimer()
+	get_node("Player").move_and_slide(Vector2(0,0))
+	if(get_node("Player").get_slide_count() >= 1):
+		game_over()
+	time += delta
+	if time >= timeSpawn:
+		time = 0
+		spawn()
 	pass
 
-func _input(event):
-	print(get_node("RigidBody2D").angular_velocity)
-	if event.is_action_pressed("click") and not dragging:
-		dragging = true
-		drag_start = get_global_mouse_position()
-	if event.is_action_released("click") and dragging:
-		dragging = false
-		var drag_end = get_global_mouse_position()
-		var dir = drag_start - drag_end
-		if dir.x != 0 and get_node("Label").visible == true:
-			stopTimer()
-		if get_node("RigidBody2D").angular_velocity + abs(dir.x) < 50:
-			get_node("RigidBody2D").add_torque(abs(dir.x))
-		else:
-			get_node("RigidBody2D").angular_velocity = 50
+func spawn():
+	var quant = randi()%2 + 1
+	var cars = [randi()%3]
+	if quant == 2:
+		cars.append((cars[0] + randi()%2 + 1) % 3)
+	for i in cars:
+		var car = get_node("enemy").duplicate()
+		car.set_script(preload("res://Scripts/Jogo1/Triangulo.gd"))
+		car.position = get_node("spawnLocations/Loc"+String(i)).position
+		add_child(car)
+	pass
+
+signal game_over
+
+func game_over():
+	emit_signal("game_over")
+	pass

@@ -1,30 +1,49 @@
 extends Node2D
 
-var dragging
-var drag_start = Vector2()
-var dir = Vector2()
 var startPos 
 var timer = 0
 var certo
 
-func _input(event):
-	if event.is_action_pressed("click") and not dragging:
-		dragging = true
-		drag_start = get_global_mouse_position()
-	if event.is_action_released("click") and dragging:
-		dragging = false
-		var aux
-		if(get_node("slide").position.x <= get_node("true").position.x):
-			aux = 0
-		if(get_node("slide").position.x >= get_node("false").position.x):
-			aux = 1
-		if(certo == aux):
-			get_node("timer").text = "10s"
-			nova_equacao()
-		else:
-			game_over()
-		get_node("slide").position = startPos
+func action(dir):
+	var aux
+	if(dir > 0):
+		aux = 0
+	else:
+		aux = 1
+	if(certo == aux):
+		get_node("timer").text = "10s"
+		nova_equacao()
+	else:
+		game_over()
 	pass
+
+#func _input(event):
+#	if event.is_action_pressed("click") and not dragging:
+#		dragging = true
+#		drag_start = get_global_mouse_position()
+#	if event.is_action_released("click") and dragging:
+#		dragging = false
+#		var aux
+#		if(get_node("slide").position.x <= get_node("true").position.x) or (get_node("slide").position.x >= get_node("false").position.x):
+#			if(get_node("slide").position.x <= get_node("true").position.x):
+#				aux = 0
+#			if(get_node("slide").position.x >= get_node("false").position.x):
+#				aux = 1
+#			if(certo == aux):
+#				get_node("timer").text = "10s"
+#				nova_equacao()
+#			else:
+#				game_over()
+#		get_node("slide").position = startPos
+#	pass
+
+#func _process(delta):
+#	if(dragging):
+#		get_node("slide").position.x = (startPos - drag_start + get_global_mouse_position()).x
+#		if(get_node("slide").position.x < get_node("true").position.x):
+#			get_node("slide").position.x = get_node("true").position.x
+#		if(get_node("slide").position.x > get_node("false").position.x):
+#			get_node("slide").position.x = get_node("false").position.x
 
 func _ready():
 	randomize()
@@ -33,13 +52,6 @@ func _ready():
 	pass
 
 func _process(delta):
-	if(dragging):
-		get_node("slide").position.x = (startPos - drag_start + get_global_mouse_position()).x
-		if(get_node("slide").position.x < get_node("true").position.x):
-			get_node("slide").position.x = get_node("true").position.x
-		if(get_node("slide").position.x > get_node("false").position.x):
-			get_node("slide").position.x = get_node("false").position.x
-	
 	timer += delta
 	var time = int(get_node("timer").text)
 	if time == 0:
@@ -65,6 +77,8 @@ func nova_equacao():
 	get_node("equacao").text = String(a) + (" + " if !op else " - ") + String(b) + " = " + String(result)
 	pass
 
+signal game_over
+
 func game_over():
-	print("alo")
+	emit_signal("game_over")
 	pass

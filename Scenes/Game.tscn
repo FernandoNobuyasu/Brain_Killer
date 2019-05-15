@@ -1,18 +1,23 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Piso.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Jogo1.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Jogo2.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Jogo3.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Jogo4.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Fonts/DroidSans.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Fonts/DroidSans.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Fonts/Avara.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 7 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 4 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -21,30 +26,17 @@ script = ExtResource( 1 )
 z_index = 10
 
 [node name="Sprite" type="Sprite" parent="grid"]
-position = Vector2( 517, 300.819 )
-scale = Vector2( 0.25, 12.0132 )
+position = Vector2( 517, 299.737 )
+scale = Vector2( 0.25, 12.1109 )
+z_as_relative = false
 texture = ExtResource( 2 )
 
 [node name="Sprite2" type="Sprite" parent="grid"]
-position = Vector2( 515.892, 300 )
+position = Vector2( 512.282, 300 )
 rotation = 1.5708
 scale = Vector2( 0.25, 20.5548 )
+z_as_relative = false
 texture = ExtResource( 2 )
-
-[node name="Jogo1" parent="." instance=ExtResource( 3 )]
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Jogo2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 512.492, 0 )
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Jogo3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 0.177246, 300.368 )
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Jogo4" parent="." instance=ExtResource( 6 )]
-position = Vector2( 512.492, 300.368 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="score" type="Label" parent="."]
 margin_left = 19.0
@@ -54,3 +46,37 @@ margin_bottom = 53.0
 custom_fonts/font = SubResource( 1 )
 text = "Score: 0"
 
+[node name="GameOver" type="Panel" parent="."]
+pause_mode = 2
+visible = false
+margin_left = 219.485
+margin_top = 59.2278
+margin_right = 822.485
+margin_bottom = 537.228
+
+[node name="Label" type="Label" parent="GameOver"]
+margin_left = 136.279
+margin_top = 30.6935
+margin_right = 456.279
+margin_bottom = 88.6935
+custom_fonts/font = SubResource( 2 )
+text = "Você perdeu!"
+
+[node name="chance" type="Button" parent="GameOver"]
+margin_left = 198.894
+margin_top = 137.507
+margin_right = 400.894
+margin_bottom = 190.507
+custom_fonts/font = SubResource( 3 )
+text = "+1 chance"
+
+[node name="voltar" type="Button" parent="GameOver"]
+margin_left = 198.894
+margin_top = 268.875
+margin_right = 400.894
+margin_bottom = 321.875
+custom_fonts/font = SubResource( 3 )
+text = "Voltar"
+
+[connection signal="pressed" from="GameOver/chance" to="." method="_on_chance_pressed"]
+[connection signal="pressed" from="GameOver/voltar" to="." method="_on_voltar_pressed"]

@@ -44,7 +44,14 @@ margin_top = 17.0
 margin_right = 127.0
 margin_bottom = 53.0
 custom_fonts/font = SubResource( 1 )
-text = "Score: 0"
+text = "Pontos:"
+
+[node name="score" type="Label" parent="score"]
+margin_left = 106.093
+margin_right = 126.093
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
 
 [node name="GameOver" type="Panel" parent="."]
 pause_mode = 2
@@ -63,20 +70,19 @@ custom_fonts/font = SubResource( 2 )
 text = "Você perdeu!"
 
 [node name="chance" type="Button" parent="GameOver"]
-margin_left = 198.894
-margin_top = 137.507
-margin_right = 400.894
-margin_bottom = 190.507
+margin_left = 118.0
+margin_top = 141.047
+margin_right = 476.0
+margin_bottom = 236.047
 custom_fonts/font = SubResource( 3 )
 text = "+1 chance"
 
 [node name="voltar" type="Button" parent="GameOver"]
-margin_left = 198.894
-margin_top = 268.875
-margin_right = 400.894
-margin_bottom = 321.875
+margin_left = 120.0
+margin_top = 287.309
+margin_right = 480.0
+margin_bottom = 385.309
 custom_fonts/font = SubResource( 3 )
 text = "Voltar"
-
 [connection signal="pressed" from="GameOver/chance" to="." method="_on_chance_pressed"]
 [connection signal="pressed" from="GameOver/voltar" to="." method="_on_voltar_pressed"]

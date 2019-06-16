@@ -7,7 +7,11 @@ var dragging = false
 var drag_start = Vector2()
 
 func _ready():
-	#jogos[3] = createJogo(4)
+	if get_node("/root/Global").linguagem:
+		get_node("score").text = "Score:"
+		get_node("GameOver/Label").text = "You lose!"
+		get_node("GameOver/chance").text = "+1 Chance"
+		get_node("GameOver/voltar").text = "Back"
 	pass
 
 func _input(event):
@@ -54,7 +58,7 @@ func _process(delta):
 		_on_game_over()
 	else:
 		timer += delta
-		get_node("score").text = "Score: " + String(int(timer))
+		get_node("score/score").text = String(int(timer))
 		if int(timer)%4 == 0 and quantJogos <= 3 and jogos[int(timer)/4] == null:
 			quantJogos += 1
 			jogos[int(timer)/4] = createJogo(quantJogos)

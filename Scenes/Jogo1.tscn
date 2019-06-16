@@ -66,4 +66,3 @@ texture = ExtResource( 6 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GeradorDeTriangulos/Triangulo"]
 visible = false
 shape = SubResource( 3 )
-

@@ -19,6 +19,10 @@ config/name="Brain_Killer"
 run/main_scene="res://Scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Scripts/Global.gd"
+
 [display]
 
 window/handheld/orientation="sensor_landscape"

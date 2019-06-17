@@ -1,11 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Jogo4.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Fundo.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Quadrado.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/DroidSans.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Sprites/Quadrado.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Piso.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/QuadradoPlayer.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/check.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/seta.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -15,10 +14,17 @@ font_data = ExtResource( 3 )
 size = 80
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 100
+outline_size = 4
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
 [node name="Jogo4" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 0.462745, 0.462745, 1 )
 scale = Vector2( 20.5, 12 )
 texture = ExtResource( 2 )
 offset = Vector2( 25, 25 )
@@ -36,9 +42,9 @@ align = 1
 
 [node name="timer" type="Label" parent="."]
 margin_left = 2.0
-margin_top = 225.0
+margin_top = 223.772
 margin_right = 1024.0
-margin_bottom = 319.0
+margin_bottom = 317.772
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 2 )
@@ -49,12 +55,30 @@ align = 1
 visible = false
 position = Vector2( 514.003, 471.797 )
 z_index = 1
-texture = ExtResource( 4 )
+texture = ExtResource( 2 )
 
 [node name="false" type="Sprite" parent="."]
-position = Vector2( 779.295, 471.797 )
+modulate = Color( 0.109804, 0.466667, 0.105882, 1 )
+position = Vector2( 769.473, 431.282 )
+scale = Vector2( 0.317377, 0.317377 )
+texture = ExtResource( 4 )
+
+[node name="seta" type="Sprite" parent="."]
+position = Vector2( 623.496, 436.649 )
+scale = Vector2( 0.326183, 0.200255 )
 texture = ExtResource( 5 )
 
-[node name="true" type="Sprite" parent="."]
-position = Vector2( 266.799, 471.797 )
-texture = ExtResource( 6 )
+[node name="seta2" type="Sprite" parent="."]
+position = Vector2( 402.503, 436.649 )
+scale = Vector2( 0.326183, 0.200255 )
+texture = ExtResource( 5 )
+flip_h = true
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0.984314, 0, 0, 1 )
+margin_left = 235.726
+margin_top = 380.599
+margin_right = 290.726
+margin_bottom = 497.599
+custom_fonts/font = SubResource( 3 )
+text = "X"

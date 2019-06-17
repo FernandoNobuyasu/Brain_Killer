@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Piso.png" type="Texture" id=2]
@@ -10,6 +10,9 @@ size = 30
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 0.47451 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 50
@@ -56,33 +59,46 @@ text = "0"
 [node name="GameOver" type="Panel" parent="."]
 pause_mode = 2
 visible = false
-margin_left = 219.485
-margin_top = 59.2278
-margin_right = 822.485
-margin_bottom = 537.228
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 1030.0
+margin_bottom = 603.0
+custom_styles/panel = SubResource( 4 )
 
 [node name="Label" type="Label" parent="GameOver"]
-margin_left = 136.279
-margin_top = 30.6935
-margin_right = 456.279
-margin_bottom = 88.6935
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 354.687
+margin_top = 48.7865
+margin_right = 674.687
+margin_bottom = 106.786
 custom_fonts/font = SubResource( 2 )
 text = "Você perdeu!"
 
-[node name="chance" type="Button" parent="GameOver"]
-margin_left = 118.0
-margin_top = 141.047
-margin_right = 476.0
-margin_bottom = 236.047
+[node name="Score" type="Label" parent="GameOver"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 1.0
+margin_top = 146.0
+margin_right = 1029.0
+margin_bottom = 204.0
+custom_fonts/font = SubResource( 2 )
+text = "Pontuação final: 0"
+align = 1
+valign = 1
+
+[node name="JogarNovamente" type="Button" parent="GameOver"]
+margin_left = 336.408
+margin_top = 241.851
+margin_right = 698.408
+margin_bottom = 336.851
 custom_fonts/font = SubResource( 3 )
-text = "+1 chance"
+text = "Jogar Novamente"
 
 [node name="voltar" type="Button" parent="GameOver"]
-margin_left = 120.0
-margin_top = 287.309
-margin_right = 480.0
-margin_bottom = 385.309
+margin_left = 338.408
+margin_top = 387.804
+margin_right = 699.408
+margin_bottom = 485.804
 custom_fonts/font = SubResource( 3 )
 text = "Voltar"
-[connection signal="pressed" from="GameOver/chance" to="." method="_on_chance_pressed"]
+[connection signal="pressed" from="GameOver/JogarNovamente" to="." method="_on_chance_pressed"]
 [connection signal="pressed" from="GameOver/voltar" to="." method="_on_voltar_pressed"]

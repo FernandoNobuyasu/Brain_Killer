@@ -8,8 +8,7 @@ var adIsReal = true
 var idBanner = "ca-app-pub-8477867296411992/1474119888"
 var idInterstitial = "ca-app-pub-8477867296411992/6273707348"
 var idRewarded = "ca-app-pub-8477867296411992/8708298993"
-var linguagem = 0
-var save = null
+var savedInfo = {"Linguagem": 0, "Scores": 0}
 
 signal statusLogadoChange
 signal interstitial_close
@@ -20,12 +19,34 @@ signal rewarded_video_ad_failed_to_load(errorCode)
 signal rewarded(currency, amount)
 
 func mudarLinguagem():
-	linguagem = abs(linguagem - 1)
-	save.store_string(String(linguagem))
+	saveLinguagem(abs(savedInfo["Linguagem"] - 1))
+
+func saveLinguagem(linguagem):
+	savedInfo["Linguagem"] = linguagem
+	saveInfo()
+	pass
+
+func saveOflineScore(score):
+	if score > savedInfo["Scores"]:
+		savedInfo["Scores"] = score
+	saveInfo()
+	pass
+
+func saveInfo():
+	var saveFile = File.new()
+	saveFile.open("save.json", File.READ_WRITE)
+	saveFile.store_line(to_json(savedInfo))
+	saveFile.close()
+	pass
+
+func loadInfo():
+	var saveFile = File.new()
+	saveFile.open("save.json", File.READ)
+	savedInfo = parse_json(saveFile.get_line())
+	pass
 
 func _ready():
-	save = File.new()
-	save.open("save.json", File.WRITE)
+	loadInfo()
 	if Engine.has_singleton("AdMob"):
 		admob = Engine.get_singleton("AdMob")
 		admob.init(adIsReal, get_instance_id())

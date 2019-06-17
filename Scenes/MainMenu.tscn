@@ -9,11 +9,11 @@
 [ext_resource path="res://Sprites/click.png" type="Texture" id=7]
 [ext_resource path="res://Fonts/DroidSans.ttf" type="DynamicFontData" id=8]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 100
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 50
 font_data = ExtResource( 8 )
 
@@ -28,9 +28,9 @@ script = ExtResource( 1 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
-margin_top = 38.568
+margin_top = 37.7722
 margin_right = -40.0
-margin_bottom = 76.568
+margin_bottom = 75.7722
 alignment = 2
 
 [node name="MenuButton" type="MenuButton" parent="HBoxContainer"]
@@ -46,6 +46,7 @@ margin_right = 936.0
 margin_bottom = 38.0
 toggle_mode = true
 icon = ExtResource( 2 )
+clip_text = true
 
 [node name="SoundBtn" type="Button" parent="HBoxContainer"]
 margin_left = 940.0
@@ -68,7 +69,7 @@ margin_left = 214.0
 margin_top = 40.0
 margin_right = 810.0
 margin_bottom = 156.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Brain Killer"
 
 [node name="PlayBtn" type="Button" parent="."]
@@ -141,7 +142,7 @@ margin_left = 4.0
 margin_top = 13.0
 margin_right = 952.0
 margin_bottom = 72.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Comandos"
 align = 1
 valign = 1
@@ -160,11 +161,12 @@ text = "X"
 flat = true
 
 [node name="HighScore" type="Label" parent="."]
+show_behind_parent = true
 margin_left = 366.486
 margin_top = 18.0
 margin_right = 721.486
 margin_bottom = 79.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Pontuação:"
 
 [node name="score" type="Label" parent="HighScore"]
@@ -172,7 +174,7 @@ margin_left = 260.365
 margin_top = 2.0
 margin_right = 288.365
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "0"
 [connection signal="pressed" from="HBoxContainer/LanguageBtn" to="." method="_on_LanguageBtn_pressed"]
 [connection signal="pressed" from="HBoxContainer/SoundBtn" to="." method="_on_SoundBtn_pressed"]

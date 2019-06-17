@@ -1,6 +1,6 @@
 extends Node2D
 
-var jump_speed = -600
+var jump_speed = -800
 var gravity = 1200
 
 var velocity = Vector2()

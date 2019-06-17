@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/QuadradoPlayer.png-59489e3b84a70331c509ad737fac073c.stex"
+path="res://.import/check.png-1f324df9e1326c9c9ca08e5b45b44748.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/QuadradoPlayer.png"
-dest_files=[ "res://.import/QuadradoPlayer.png-59489e3b84a70331c509ad737fac073c.stex" ]
+source_file="res://Sprites/check.png"
+dest_files=[ "res://.import/check.png-1f324df9e1326c9c9ca08e5b45b44748.stex" ]
 
 [params]
 

@@ -6,7 +6,7 @@ var certo
 
 func action(dir):
 	var aux
-	if(dir > 0):
+	if(dir < 0):
 		aux = 0
 	else:
 		aux = 1

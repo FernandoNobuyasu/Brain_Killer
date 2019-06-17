@@ -6,12 +6,15 @@ func _ready():
 	pass
 
 func carregarTexto():
-	if get_node("/root/Global").linguagem:
+	get_node("HighScore/score").text = get_node("/root/Global").savedInfo["Scores"]
+	if get_node("/root/Global").savedInfo["Linguagem"]:
+		get_node("HBoxContainer/LanguageBtn").icon = preload("res://Sprites/USA.jpg")
 		get_node("HighScore").text = "HighScore:"
 		get_node("PlayBtn").text = "Play"
 		get_node("HSBtn").text = "HighScores"
 		get_node("Help").text = "How to Play"
 	else:
+		get_node("HBoxContainer/LanguageBtn").icon = preload("res://Sprites/brazil32.png")
 		get_node("HighScore").text = "Pontuação:"
 		get_node("PlayBtn").text = "Jogar"
 		get_node("HSBtn").text = "Pontuações"

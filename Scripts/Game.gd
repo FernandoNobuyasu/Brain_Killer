@@ -7,10 +7,10 @@ var dragging = false
 var drag_start = Vector2()
 
 func _ready():
-	if get_node("/root/Global").linguagem:
+	if get_node("/root/Global").savedInfo["Linguagem"]:
 		get_node("score").text = "Score:"
 		get_node("GameOver/Label").text = "You lose!"
-		get_node("GameOver/chance").text = "+1 Chance"
+		get_node("GameOver/JogarNovamente").text = "Play Again"
 		get_node("GameOver/voltar").text = "Back"
 	pass
 
@@ -66,11 +66,18 @@ func _process(delta):
 
 func _on_game_over():
 	get_tree().paused = true
+	get_node("GameOver/Score").text = ("Pontuação final: " if !get_node("/root/Global").savedInfo["Linguagem"] else "Score: ") + get_node("score/score").text
 	get_node("GameOver").visible = true
+	salvar()
 	pass
 
 func _on_chance_pressed():
-	
+	get_tree().paused = false
+	get_tree().change_scene("res://Scenes/Game.tscn")
+	pass
+
+func salvar():
+	get_node("/root/Global").saveOflineScore(get_node("score/score").text)
 	pass
 
 func _on_voltar_pressed():

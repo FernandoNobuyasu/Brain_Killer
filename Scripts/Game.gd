@@ -7,6 +7,7 @@ var dragging = false
 var drag_start = Vector2()
 
 func _ready():
+	get_tree().paused = false
 	if get_node("/root/Global").savedInfo["Linguagem"]:
 		get_node("score").text = "Score:"
 		get_node("GameOver/Label").text = "You lose!"

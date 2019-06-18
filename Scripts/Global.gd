@@ -27,22 +27,22 @@ func saveLinguagem(linguagem):
 	pass
 
 func saveOflineScore(score):
-	if score > savedInfo["Scores"]:
-		savedInfo["Scores"] = score
+	if int(score) > int(savedInfo["Scores"]):
+		savedInfo["Scores"] = int(score)
 	saveInfo()
 	pass
 
 func saveInfo():
 	var saveFile = File.new()
-	saveFile.open("save.json", File.READ_WRITE)
+	saveFile.open("save.json", File.WRITE)
 	saveFile.store_line(to_json(savedInfo))
 	saveFile.close()
 	pass
 
 func loadInfo():
 	var saveFile = File.new()
-	saveFile.open("save.json", File.READ)
-	savedInfo = parse_json(saveFile.get_line())
+	if saveFile.open("save.json", File.READ) == 0:
+		savedInfo = parse_json(saveFile.get_line())
 	pass
 
 func _ready():

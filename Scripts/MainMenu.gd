@@ -6,7 +6,7 @@ func _ready():
 	pass
 
 func carregarTexto():
-	get_node("HighScore/score").text = get_node("/root/Global").savedInfo["Scores"]
+	get_node("HighScore/score").text = String(get_node("/root/Global").savedInfo["Scores"])
 	if get_node("/root/Global").savedInfo["Linguagem"]:
 		get_node("HBoxContainer/LanguageBtn").icon = preload("res://Sprites/USA.jpg")
 		get_node("HighScore").text = "HighScore:"

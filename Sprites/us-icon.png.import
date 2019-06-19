@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/USA.jpg-d023f8da1eeab6e8f309ccf267fd1083.stex"
+path="res://.import/us-icon.png-6b3d24a9061e53f97a5d243901f29ff5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/USA.jpg"
-dest_files=[ "res://.import/USA.jpg-d023f8da1eeab6e8f309ccf267fd1083.stex" ]
+source_file="res://Sprites/us-icon.png"
+dest_files=[ "res://.import/us-icon.png-6b3d24a9061e53f97a5d243901f29ff5.stex" ]
 
 [params]
 

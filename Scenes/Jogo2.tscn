@@ -84,3 +84,4 @@ shape = SubResource( 1 )
 
 [node name="Sprite2" type="Sprite" parent="enemy"]
 texture = ExtResource( 2 )
+

@@ -10,9 +10,9 @@ func _ready():
 	get_tree().paused = false
 	if get_node("/root/Global").savedInfo["Linguagem"]:
 		get_node("score").text = "Score:"
-		get_node("GameOver/Label").text = "You lose!"
+		get_node("GameOver/Label").text = "You lost!"
 		get_node("GameOver/JogarNovamente").text = "Play Again"
-		get_node("GameOver/voltar").text = "Back"
+		get_node("GameOver/voltar").text = "Menu"
 	pass
 
 func _input(event):

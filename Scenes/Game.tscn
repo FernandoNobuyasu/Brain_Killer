@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Piso.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/DroidSans.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Fonts/Avara.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -11,16 +10,16 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 1, 1, 1, 0.47451 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 50
-font_data = ExtResource( 4 )
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.384314, 0.384314, 0.384314, 0.913725 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 40
-font_data = ExtResource( 4 )
+size = 60
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 35
+font_data = ExtResource( 3 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -63,42 +62,46 @@ margin_left = -2.0
 margin_top = -2.0
 margin_right = 1030.0
 margin_bottom = 603.0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 5 )
 
 [node name="Label" type="Label" parent="GameOver"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 354.687
-margin_top = 48.7865
-margin_right = 674.687
-margin_bottom = 106.786
-custom_fonts/font = SubResource( 2 )
+margin_left = 3.16632
+margin_top = 106.828
+margin_right = 1032.17
+margin_bottom = 177.828
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Você perdeu!"
+align = 1
 
 [node name="Score" type="Label" parent="GameOver"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 1.0
-margin_top = 146.0
+margin_top = 212.421
 margin_right = 1029.0
-margin_bottom = 204.0
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 283.421
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Pontuação final: 0"
 align = 1
 valign = 1
 
 [node name="JogarNovamente" type="Button" parent="GameOver"]
-margin_left = 336.408
-margin_top = 241.851
-margin_right = 698.408
-margin_bottom = 336.851
-custom_fonts/font = SubResource( 3 )
+margin_left = 362.996
+margin_top = 326.981
+margin_right = 668.996
+margin_bottom = 407.981
+custom_fonts/font = SubResource( 4 )
 text = "Jogar Novamente"
 
 [node name="voltar" type="Button" parent="GameOver"]
-margin_left = 338.408
-margin_top = 387.804
-margin_right = 699.408
-margin_bottom = 485.804
-custom_fonts/font = SubResource( 3 )
-text = "Voltar"
+margin_left = 361.499
+margin_top = 426.123
+margin_right = 669.499
+margin_bottom = 507.123
+custom_fonts/font = SubResource( 4 )
+text = "Menu"
+
 [connection signal="pressed" from="GameOver/JogarNovamente" to="." method="_on_chance_pressed"]
 [connection signal="pressed" from="GameOver/voltar" to="." method="_on_voltar_pressed"]

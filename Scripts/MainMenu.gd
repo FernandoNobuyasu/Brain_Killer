@@ -37,10 +37,10 @@ func _on_Help_pressed():
 	get_node("Panel").visible = true
 	pass
 
-
 func _on_HSBtn_pressed():
-	pass # Replace with function body.
-
+	if get_node("/root/Global").gpgs != null:
+		get_node("/root/Global").gpgs.showLeaderboardUI(get_node("/root/Global").leaderboardID)
+	pass
 
 func _on_LanguageBtn_pressed():
 	get_node("/root/Global").mudarLinguagem();

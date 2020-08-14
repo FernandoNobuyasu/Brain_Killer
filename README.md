@@ -1,2 +1,2 @@
-# Brain_Killer
-Jogo 2D desenvolvido para Engenharia de Software II
+# Brain Killer
+2D game developed as the final assigment for Software Engineer II course
